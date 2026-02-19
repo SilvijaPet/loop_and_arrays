@@ -8,9 +8,8 @@ for i in range(10):
 
 print("============================ 2 uzduotis =======================")
 # Sukurkite ciklą kuris atspausdintų skaičius nuo 0 iki 9.
-numbers = [0,1,2,3,4,5,6,7,8,9]
 
-for i in numbers:
+for i in range(10):
     print(i)
 
 print("============================ 3 uzduotis =======================")
@@ -34,11 +33,9 @@ print(augalai)
 print("============================ 6 uzduotis =======================")
 # Atspausdinkite kas antrą skaičių nuo 10 iki 50 (porinius);
 
-numbers1 = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50]
-print(numbers1[0::2])
-
-# for skaicius in range(10, 51, 2):
-#     print(skaicius)
+for number in range(10,51):
+    if number % 2 == 0:
+        print(number)
 
 print("============================ 7 uzduotis =======================")
 # Atspausdinkite kas antrą skaičių nuo 10 iki 50. (porinius)
@@ -53,7 +50,7 @@ for i in range(10,50,2):
 print("============================ 8 uzduotis =======================")
 # Sukurkite ciklą kuris suktųsi nuo 0 iki 20. Suskaičiuokite, kiek kartų kintamasis i turėjo porinę reikšmę;
 count = 0
-for i in range(0,21):
+for i in range(21):
     if i % 2 == 0:
         count += 1
 print(count)
@@ -66,10 +63,13 @@ count = 0
 for i in augalai:
     if len(i) < 5:
         count += 1
+
 print(f"Trumpesniu zodziu nei 5 raides: {count}")
+
 for i in augalai:
     if len(i) > 7:
         count += 1
+
 print(f"Ilgesniu zodziu nei 7 raides: {count}")
 
 print("============================ 10 uzduotis =======================")
@@ -82,6 +82,7 @@ for i in augalai:
         count += 1
 print(count)
 
+
 print("============================ SUNKESNI =========================")
 print("============================ 1 uzduotis =======================")
 # Sugeneruokite 300 atsitiktinių skaičių nuo 0 iki 300, atspausdinkite juos atskirtus tarpais vienoje eilutėje
@@ -89,7 +90,7 @@ print("============================ 1 uzduotis =======================")
 # Skaičiai didesni nei 275 turi būti atspausdinti skliausteliuose” [ ] “.
 
 numbers = [random.randint(0,300) for num in range(0,300)]
-# # print(*numbers, sep=" ")
+# print(*numbers, sep=" ")
 
 count = 0
 symbol = []
@@ -102,7 +103,7 @@ for num in numbers:
     else:
         symbol.append(str(num))
 
-print(*symbol)
+print(*symbol, sep=" ")
 print("Skaičių didesnių už 150:", count)
 
 print("============================ 2 uzduotis =======================")
@@ -112,20 +113,35 @@ print("============================ 2 uzduotis =======================")
 numbers = [num for num in range(0,3000)]
 div_77 = [n for n in numbers if n % 77 == 0]
 
-print(*div_77, sep=",")
+print(div_77, sep=",")
+
+# nums = []
+
+# for num in range(1,3000):
+#     if num % 77 == 0:
+#         nums.append(str(num))
+#
+# print(",".join(nums))
 
 print("============================ 3 uzduotis =======================")
 # Nupieškite kvadratą iš “*”, kurio kraštines sudaro 25“*”
 
-square = 25
-
-for i in range(square):
-    print("*" * square)
+for i in range(25):
+    print("*" * 25)
 
 print("============================ 4 uzduotis =======================")
 # Prieš tai nupieštam kvadratui nupieškite istrižaines, zaigzdutę pakeisdami kitu simboliu.
+dydis = 25
 
+for eilute in range(dydis):
+    for stulpelis in range(dydis):
 
+        if eilute == stulpelis or eilute + stulpelis == dydis - 1:
+            print("X", end="")
+        else:
+            print("*", end="")
+
+    print()
 print("============================ 5 uzduotis =======================")
 # Metam monetą. Monetos kritimo rezultatą imituojam random.randint(x,x) funkcija, kur 0 yra herbas, o 1 - skaičius.
 # Monetos metimo rezultatus išvedame į ekraną atskiroje eilutėje: “S” jeigu iškrito skaičius ir “H” jeigu herbas.
@@ -171,3 +187,112 @@ print("============================ 6 uzduotis =======================")
 # Vienoje eilutėje išvesti žaidėjų vardus su taškų kiekiu ir “Partiją laimėjo: laimėtojo vardas”.
 # Taškų kiekį generuokite funkcija random.randint(x,x).
 # Žaidimą laimi tas, kas greičiau surenka 222 taškus. Partijas kartoti tol, kol kažkuris žaidėjas pirmas surenka 222 arba daugiau taškų.
+
+kazys_total = 0
+petras_total = 0
+
+while kazys_total < 222 and petras_total < 222:
+    kazys_points = random.randint(5, 25)
+    petras_points = random.randint(10, 20)
+
+    kazys_total += kazys_points
+    petras_total += petras_points
+
+    # Nustatome partijos laimėtoją
+    if kazys_points > petras_points:
+        winner = "Kazys"
+    elif petras_points > kazys_points:
+        winner = "Petras"
+    else:
+        winner = "Lygiosios"
+
+    print(f"Kazys: {kazys_points}, Petras: {petras_points} | Partiją laimėjo: {winner}")
+
+# Galutinis laimėtojas
+if kazys_total >= 222:
+    print(f"\nŽaidimą laimėjo Kazys su {kazys_total} taškų!")
+else:
+    print(f"\nŽaidimą laimėjo Petras su {petras_total} taškų!")
+
+print("============================ 7 uzduotis =======================")
+# Reikia nupaišyti pilnavidurį rombą, taip pat, kaip ir pilnavidurį kvadratą, kurio aukštis 21 eilutė.
+
+dydis = 21
+puse = dydis // 2
+
+for eilute in range(dydis):
+    for stulpelis in range(dydis):
+        # tikriname ar žvaigždė priklauso rombo plotui
+        if abs(stulpelis - puse) <= (puse - abs(eilute - puse)):
+            print("*", end="")
+        else:
+            print(" ", end="")
+    print()
+
+print("============================ 8 uzduotis =======================")
+# Sumodeliuokite vinies kalimą.
+# Įkalimo gylį sumodeliuokite pasinaudodami random.randint(x,x) funkcija. Vinies ilgis 8.5cm (pilnai sulenda į lentą).
+# a) “Įkalkite” 5 vinis mažais smūgiais. Vienas smūgis vinį įkala 5-20 mm. Suskaičiuokite kiek reikia smūgių.
+# b) “Įkalkite” 5 vinis dideliais smūgiais. Vienas smūgis vinį įkala 20-30 mm, bet yra 50% tikimybė (pasinaudokite random.randint(x,x) funkcija tikimybei sumodeliuoti), kad smūgis nepataikys į vinį. Suskaičiuokite kiek reikia smūgių.
+
+VINIES_ILGIS = 85  # mm (8.5 cm)
+
+# a) Maži smūgiai (5–20 mm)
+bendras_smugiu_skaicius_mazais = 0
+
+for vinis in range(5):
+    gylis = 0
+    smugiai = 0
+
+    while gylis < VINIES_ILGIS:
+        ikalimas = random.randint(5, 20)
+        gylis += ikalimas
+        smugiai += 1
+
+    bendras_smugiu_skaicius_mazais += smugiai
+
+print("Maži smūgiai - iš viso smūgių:", bendras_smugiu_skaicius_mazais)
+
+# b) Dideli smūgiai (20–30 mm), 50% tikimybė nepataikyti
+bendras_smugiu_skaicius_dideliais = 0
+
+for vinis in range(5):
+    gylis = 0
+    smugiai = 0
+
+    while gylis < VINIES_ILGIS:
+        smugiai += 1
+
+        # 50% tikimybė pataikyti
+        pataike = random.randint(0, 1)
+
+        if pataike == 1:
+            ikalimas = random.randint(20, 30)
+            gylis += ikalimas
+
+    bendras_smugiu_skaicius_dideliais += smugiai
+
+print("Dideli smūgiai - iš viso smūgių:", bendras_smugiu_skaicius_dideliais)
+
+print("============================ 9 uzduotis =======================")
+# Sugeneruokite stringą, kurį sudarytų 50 atsitiktinių skaičių nuo 1 iki 200, atskirtų tarpais. Skaičiai turi būti unikalūs (t.y. nesikartoti).
+# Sugeneruokite antrą stringą, pasinaudodami pirmu, palikdami jame tik pirminius skaičius (t.y tokius, kurie dalinasi be liekanos tik iš 1 ir patys savęs).
+# Skaičius stringe sudėliokite didėjimo tvarka, nuo mažiausio iki didžiausio. (reikės split() funkcijos ir masyvų.)
+
+numbers = random.sample(range(1,201), 50) #random.sample neleidzia kartotis skaiciams
+print("Pirminis sąrašas:", *numbers, sep=" ")
+
+pirminiai = []
+
+for i in numbers:
+    if i < 2:
+        continue  # ne pirminiai
+    pirminis = True
+    for k in range(2, i):  # tikriname visus skaičius nuo 2 iki i-1, o ir 1 ne pirminiai todel ju netikriname
+        if i % k == 0:
+            pirminis = False
+            break
+    if pirminis:  # jei tai pirminis skaicius, pridedame ji prie saraso
+        pirminiai.append(i)
+
+print("Tik pirminiai skaičiai:",*pirminiai, sep=" ")
